@@ -9,11 +9,13 @@ var logger = LogManager.LoadConfiguration(path).GetCurrentClassLogger();
 // designate the file to read/write to
 string ticketFilePath = Directory.GetCurrentDirectory() + "//tickets.csv";
 string enhancementFilePath = Directory.GetCurrentDirectory() + "//enhancements.csv";
+string taskFilePath = Directory.GetCurrentDirectory() + "//tasks.csv";
 
 logger.Info("Program started");
 
 TicketFile ticketFile = new TicketFile(ticketFilePath);
 EnhancementFile enhancementFile = new EnhancementFile(enhancementFilePath);
+TaskFile taskFile = new TaskFile(taskFilePath);
 
 string choice = "";
 string chosenSubClass = "";
@@ -33,6 +35,7 @@ do
     // Add ticket
     HelpTicket ticket = new HelpTicket();
     Enhancement enhancement = new Enhancement();
+    Task task = new Task();
 
     // Ask which type of ticket to add
     Console.WriteLine("Select which type of item to add:");
@@ -112,6 +115,23 @@ do
         enhancementFile.AddEnhancement(enhancement);
         break;
       case "3": // Task
+        task.ticketId = ticket.ticketId;
+        task.summary = ticket.summary;
+        task.status = ticket.status;
+        task.priority = ticket.priority;
+        task.submitter = ticket.submitter;
+        task.assigned = ticket.assigned;
+        task.watcher = ticket.watcher;
+
+        // prompt for project name
+        Console.WriteLine("Please enter the Project Name: ");
+        task.projectName = Console.ReadLine();
+        // prompt for due date
+        Console.WriteLine("Please enter the due date (mm/dd/yyyy): ");
+        task.dueDate = Console.ReadLine();
+
+        // add task to task list file
+        taskFile.AddTask(task);
         break;
     }
 
@@ -127,23 +147,25 @@ do
     chosenSubClass = Console.ReadLine();
     logger.Info("User choice: {chosenSubClass}\n", chosenSubClass);
 
-
     // Display All Itemss
-
     switch(chosenSubClass){
       case "1": // Help Ticket
         foreach(HelpTicket t in ticketFile.Tickets)
-          {
-            Console.WriteLine(t.Display());
-          }
+        {
+          Console.WriteLine(t.Display());
+        }
         break;
       case "2": // Enhancement
-      foreach(Enhancement e in enhancementFile.Enhancements)
-          {
-            Console.WriteLine(e.Display());
-          }
+        foreach(Enhancement e in enhancementFile.Enhancements)
+        {
+          Console.WriteLine(e.Display());
+        }
         break;
       case "3": // Task
+        foreach(Task t in taskFile.Tasks)
+        {
+          Console.WriteLine(t.Display());
+        }
         break;
     }
 
