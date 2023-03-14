@@ -14,6 +14,7 @@ logger.Info("Program started");
 TicketFile ticketFile = new TicketFile(ticketFilePath);
 
 string choice = "";
+string chosenSubClass = "";
 do
 {
   // display choices to user
@@ -28,54 +29,72 @@ do
   if (choice == "1")
   {
     // Add ticket
-    Ticket ticket = new Ticket();
+    HelpTicket ticket = new HelpTicket();
+
+    // Ask which type of ticket to add
+    Console.WriteLine("1) Add Help Ticket");
+    Console.WriteLine("2) Add Enhancement");
+    Console.WriteLine("3) Add Task");
+
+    // input selection
+    chosenSubClass = Console.ReadLine();
+    logger.Info("User choice: {Choice}", choice);
+
+    // Obtain input for the common fields
     
-      for (int i = 0; i < 7; i++)
-      {
-        // ask a question
-        Console.WriteLine("Enter a ticket (Y/N)?");
-        // input the response
-        string resp = Console.ReadLine().ToUpper();
-        // if the response is anything other than "Y", stop asking
-        if (resp != "Y") { break; }
-        // prompt for a ticket id number
-        Console.WriteLine("Enter a Ticket Number: ");
-        // save the Ticket id number
-        ticket.ticketId = UInt64.Parse(Console.ReadLine());
-        // prompt for ticket Summary
-        Console.WriteLine("Enter a Summary for the ticket:  ");
-        // save the ticket Summary
-        ticket.summary = Console.ReadLine();
-        // prompt for ticket status
-        Console.WriteLine("Enter the ticket status (open/closed).");
-        // save the ticket status
-        ticket.status = Console.ReadLine();
-        // prompt for priority
-        Console.WriteLine("Enter the ticket priority (high/low).");
-        // save the ticket priority
-        ticket.priority = Console.ReadLine();
-        // prompt for the name of the ticket submitter
-        Console.WriteLine("Enter the name of the person submitting the ticket.");
-        // save the name of the submitter
-        ticket.submitter = Console.ReadLine();
-        // prompt for the name of the person to whom the ticket is assigned
-        Console.WriteLine("Enter the name of the person to whom the ticket is assigned.");
-        // save the name of the assignee
-        ticket.assigned = Console.ReadLine();
-        // prompt for the name of the ticket watcher
-        Console.WriteLine("Enter the name of the person watching the ticket.");
-        // save the name of the watcher
-        ticket.watcher = Console.ReadLine();
-                
-        // add ticket
-        ticketFile.AddTicket(ticket);
-      }
+    // prompt for a ticket id number
+    Console.WriteLine("Enter a Ticket Number: ");
+    // save the Ticket id number
+    ticket.ticketId = UInt64.Parse(Console.ReadLine());
+    // prompt for ticket Summary
+    Console.WriteLine("Enter a Summary for the ticket:  ");
+    // save the ticket Summary
+    ticket.summary = Console.ReadLine();
+    // prompt for ticket status
+    Console.WriteLine("Enter the ticket status (open/closed).");
+    // save the ticket status
+    ticket.status = Console.ReadLine();
+    // prompt for priority
+    Console.WriteLine("Enter the ticket priority (high/low).");
+    // save the ticket priority
+    ticket.priority = Console.ReadLine();
+    // prompt for the name of the ticket submitter
+    Console.WriteLine("Enter the name of the person submitting the ticket.");
+    // save the name of the submitter
+    ticket.submitter = Console.ReadLine();
+    // prompt for the name of the person to whom the ticket is assigned
+    Console.WriteLine("Enter the name of the person to whom the ticket is assigned.");
+    // save the name of the assignee
+    ticket.assigned = Console.ReadLine();
+    // prompt for the name of the ticket watcher
+    Console.WriteLine("Enter the name of the person watching the ticket.");
+    // save the name of the watcher
+    ticket.watcher = Console.ReadLine();
+
+    // populate the fields specific to each subclass
+    switch(chosenSubClass){
+      case "1": // Help Ticket
+          // prompt for a ticket severity
+          Console.WriteLine("Enter the Severity (1 - 10): ");
+          // save the Ticket id number
+          ticket.severity = UInt64.Parse(Console.ReadLine());
+          // add ticket
+          ticketFile.AddTicket(ticket);
+        break;
+      case "2": // Enhancement
+        break;
+      case "3": // Task
+        break;
+    }
+
+        
+
     
 
   } else if (choice == "2")
   {
     // Display All Tickets
-    foreach(Ticket t in ticketFile.Tickets)
+    foreach(HelpTicket t in ticketFile.Tickets)
     {
       Console.WriteLine(t.Display());
     }

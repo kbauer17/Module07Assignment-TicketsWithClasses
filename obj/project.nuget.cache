@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jTv8FTeQzg2My9WpODmk3yn5WAKcV+vRb1JpCqYOehtQe1VO1vjFKZTQev5MxRMqny9WLD+Q5/loeb7EMQ866Q==",
+  "dgSpecHash": "Za0pFmE6W+JXmLvBbNxm5Gj7rnXK2rVKPaCf7wmZ+L+e0+abXk5XjQO4lhoRty/xAdPn6ZLrQqdQIsPXWbK+jw==",
   "success": true,
-  "projectFilePath": "D:\\School\\2023 Spring\\DotNet\\Module06\\Module06Assignment\\Module06Assignment.csproj",
+  "projectFilePath": "D:\\School\\2023 Spring\\DotNet\\Module07\\Module07Assignment\\Module06Assignment.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kathy Bauer\\.nuget\\packages\\nlog\\5.1.1\\nlog.5.1.1.nupkg.sha512"
   ],

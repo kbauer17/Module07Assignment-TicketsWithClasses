@@ -3,7 +3,7 @@ public class TicketFile
 {
   // public property
   public string filePath { get; set; }
-  public List<Ticket> Tickets { get; set; }
+  public List<HelpTicket> Tickets { get; set; }
   private static NLog.Logger logger = LogManager.LoadConfiguration(Directory.GetCurrentDirectory() + "//nlog.config").GetCurrentClassLogger();
 
 
@@ -13,7 +13,7 @@ public class TicketFile
   {
     filePath = ticketFilePath;
     
-    Tickets = new List<Ticket>();
+    Tickets = new List<HelpTicket>();
 
     // to populate the Ticket list with data, read from the data file
     try
@@ -22,8 +22,8 @@ public class TicketFile
   
       while (!sr.EndOfStream)
       { 
-        // create instance of Ticket class
-        Ticket ticket = new Ticket();
+        // create instance of HelpTicket class
+        HelpTicket ticket = new HelpTicket();
         string line = sr.ReadLine();      
        
         string[] ticketDetails = line.Split('|');
@@ -34,6 +34,7 @@ public class TicketFile
         ticket.submitter = ticketDetails[4];
         ticket.assigned = ticketDetails[5];
         ticket.watcher = ticketDetails[6];
+        ticket.severity = UInt64.Parse(ticketDetails[7]);
               
         Tickets.Add(ticket);
       }
@@ -48,13 +49,13 @@ public class TicketFile
   }
 
   // method to add tickets to file
-  public void AddTicket(Ticket ticket)
+  public void AddTicket(HelpTicket ticket)
   {
     try
     {
       StreamWriter sw = new StreamWriter(filePath, true);
 
-      sw.WriteLine("{0}|{1}|{2}|{3}|{4}|{5}|{6}",ticket.ticketId,ticket.summary, ticket.status,ticket.priority,ticket.submitter,ticket.assigned,ticket.watcher);
+      sw.WriteLine("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}",ticket.ticketId,ticket.summary, ticket.status,ticket.priority,ticket.submitter,ticket.assigned,ticket.watcher,ticket.severity);
       sw.Close();
       // add ticket details to Lists
       Tickets.Add(ticket);

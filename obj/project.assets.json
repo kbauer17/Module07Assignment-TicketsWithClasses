@@ -54,11 +54,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\School\\2023 Spring\\DotNet\\Module06\\Module06Assignment\\Module06Assignment.csproj",
+      "projectUniqueName": "D:\\School\\2023 Spring\\DotNet\\Module07\\Module07Assignment\\Module06Assignment.csproj",
       "projectName": "Module06Assignment",
-      "projectPath": "D:\\School\\2023 Spring\\DotNet\\Module06\\Module06Assignment\\Module06Assignment.csproj",
+      "projectPath": "D:\\School\\2023 Spring\\DotNet\\Module07\\Module07Assignment\\Module06Assignment.csproj",
       "packagesPath": "C:\\Users\\Kathy Bauer\\.nuget\\packages\\",
-      "outputPath": "D:\\School\\2023 Spring\\DotNet\\Module06\\Module06Assignment\\obj\\",
+      "outputPath": "D:\\School\\2023 Spring\\DotNet\\Module07\\Module07Assignment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kathy Bauer\\AppData\\Roaming\\NuGet\\NuGet.Config"

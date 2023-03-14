@@ -1,4 +1,4 @@
-public class Ticket
+public abstract class Ticket
 {
   public UInt64 ticketId { get; set; }
   public string summary { get; set; }
@@ -10,7 +10,7 @@ public class Ticket
   
 
   // method to display tickets
-  public string Display()
+  public virtual string Display()
     {
       return $"Id: {ticketId}\nSummary: {summary}\nStatus: {status}\nPriority: {priority}\nSubmitter: {submitter}\nAssigned: {assigned}\nWatcher: {watcher}\n"; 
     }
