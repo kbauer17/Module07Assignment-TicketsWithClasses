@@ -40,7 +40,7 @@ public class TicketFile
       }
       // close file when done
       sr.Close();
-      logger.Info("Tickets in file {Count}", Tickets.Count);
+      logger.Info("Tickets in file {Count}\n", Tickets.Count);
     }
     catch (Exception ex)
     {
@@ -60,7 +60,7 @@ public class TicketFile
       // add ticket details to Lists
       Tickets.Add(ticket);
       // log transaction
-      logger.Info("Ticket id {ticketId} added", ticket.ticketId);
+      logger.Info("Ticket id {ticketId} added\n", ticket.ticketId);
     } 
     catch(Exception ex)
     {

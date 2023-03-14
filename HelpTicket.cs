@@ -6,6 +6,6 @@ public class HelpTicket : Ticket
   // method to display tickets
   public override string Display()
     {
-      return $"Id: {ticketId}\nSummary: {summary}\nStatus: {status}\nPriority: {priority}\nSubmitter: {submitter}\nAssigned: {assigned}\nWatcher: {watcher}\nSeverity: {severity}"; 
+      return $"Id: {ticketId}\nSummary: {summary}\nStatus: {status}\nPriority: {priority}\nSubmitter: {submitter}\nAssigned: {assigned}\nWatcher: {watcher}\nSeverity: {severity}\n"; 
     }
 }
